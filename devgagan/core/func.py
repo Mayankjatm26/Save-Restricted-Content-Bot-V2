@@ -42,7 +42,7 @@ async def subscribe(app, message):
          await message.reply_photo(photo="https://graph.org/file/d44f024a08ded19452152.jpg",caption=script.FORCE_MSG.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join Now...", url=f"{url}")]]))
          return 1
       except Exception:
-         await message.reply_text("Something Went Wrong. Contact us @devgaganin...")
+         await message.reply_text("Something Went Wrong. Contact us @oo7jatji ...")
          return 1
 
 
@@ -89,7 +89,7 @@ PROGRESS_BAR = """\n
 │ **__Speed:__** {3}/s
 │ **__ETA:__** {4}
 ╰─────────────────────╯
-"""
+MADE By ❤️ @WarriorUnitsBots """
 
 
 async def progress_bar(current, total, ud_type, message, start):

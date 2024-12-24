@@ -33,7 +33,7 @@ db = mongo_client[DB_NAME]
 collection = db[COLLECTION_NAME]
 if STRING:
     from devgagan import pro
-    print("App imported from devgagan.")
+    print("App imported from @WarriorUnitsBots.")
 else:
     pro = None
     print("STRING is not available. 'app' is set to None.")
@@ -57,7 +57,7 @@ async def get_msg(userbot, sender, edit_id, msg_link, i, message):
         else:
             chat = msg_link.split("/")[-2]
         if chat in saved_channel_ids:
-            await app.edit_message_text(message.chat.id, edit_id, "Sorry! dude 😎 This channel is protected 🔐 by **__Team SPY__**")
+            await app.edit_message_text(message.chat.id, edit_id, "Sorry! dude 😎 This channel is protected 🔐 by **__Warrior Units__**")
             return
         file = ""
         try:
@@ -398,7 +398,7 @@ def load_user_session(sender_id):
 async def set_rename_command(user_id, custom_rename_tag):
     user_rename_preferences[str(user_id)] = custom_rename_tag
 def get_user_rename_preference(user_id):
-    return user_rename_preferences.get(str(user_id), 'Team SPY')
+    return user_rename_preferences.get(str(user_id), 'Warrior Units Bots')
 async def set_caption_command(user_id, custom_caption):
     user_caption_preferences[str(user_id)] = custom_caption
 def get_user_caption_preference(user_id):
@@ -415,7 +415,7 @@ async def settings_command(event):
         [Button.inline("Session Login", b'addsession'), Button.inline("Logout", b'logout')],
         [Button.inline("Set Thumbnail", b'setthumb'), Button.inline("Remove Thumbnail", b'remthumb')],
         [Button.inline("Upload Method", b'uploadmethod')],
-        [Button.url("Report Errors", "https://t.me/team_spy_pro")]
+        [Button.url("Report Errors", "https://t.me/WarriorUnitsBots")]
     ]
     await gf.send_file(
         event.chat_id,
@@ -459,18 +459,18 @@ async def callback_query_handler(event):
         user_data = collection.find_one({'user_id': user_id})
         current_method = user_data.get('upload_method', 'Pyrogram') if user_data else 'Pyrogram'
         pyrogram_check = " ✅" if current_method == "Pyrogram" else ""
-        spylib_check = " ✅" if current_method == "SpyLib" else ""
+        spylib_check = " ✅" if current_method == "WarriorLib" else ""
         buttons = [
             [Button.inline(f"Pyrogram v2{pyrogram_check}", b'pyrogram')],
-            [Button.inline(f"SpyLib v1 ⚡{spylib_check}", b'spylib')]
+            [Button.inline(f"WarriorLib v1 ⚡{spylib_check}", b'spylib')]
         ]
-        await event.edit("Choose your preferred upload method:\n\n__**Note:** **SpyLib ⚡**, built on Telethon(base), by Team SPY still in beta.__", buttons=buttons)
+        await event.edit("Choose your preferred upload method:\n\n__**Note:** **WarriorLib ⚡**, built on Telethon(base), by @WarriorUnitsBots still in beta.__", buttons=buttons)
     elif event.data == b'pyrogram':
         save_user_upload_method(user_id, "Pyrogram")
         await event.edit("Upload method set to **Pyrogram** ✅")
     elif event.data == b'spylib':
         save_user_upload_method(user_id, "SpyLib")
-        await event.edit("Upload method set to **SpyLib ⚡\n\nThanks for choosing this library as it will help me to analyze the error raise issues on github.** ✅")        
+        await event.edit("Upload method set to **WarriorLib ⚡\n\nThanks for choosing this library as it will help me to analyze the error raise issues on github.** ✅")        
     elif event.data == b'reset':
         try:
             user_id_str = str(user_id)
@@ -619,7 +619,7 @@ def progress_callback(done, total, user_id):
     remaining_time_min = remaining_time / 60
     final = (
         f"╭──────────────────╮\n"
-        f"│     **__SpyLib ⚡ Uploader__**       \n"
+        f"│     **__WarriorLib ⚡ Uploader__**       \n"
         f"├──────────\n"
         f"│ {progress_bar}\n\n"
         f"│ **__Progress:__** {percent:.2f}%\n"
@@ -627,7 +627,7 @@ def progress_callback(done, total, user_id):
         f"│ **__Speed:__** {speed_mbps:.2f} Mbps\n"
         f"│ **__ETA:__** {remaining_time_min:.2f} min\n"
         f"╰──────────────────╯\n\n"
-        f"**__Powered by Team SPY__**"
+        f"**__MADE By ❤️ @WarriorUnitsBots __**"
     )
     user_data['previous_done'] = done
     user_data['previous_time'] = time.time()
